@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/enter_data_dialog"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/insert_your_data"
+            tools:layout_editor_absoluteX="101dp"
+            tools:layout_editor_absoluteY="254dp"
+            android:layout_margin="10dp"
+            android:textSize="20sp"/>
+
+        <EditText
+            android:id="@+id/edit_ip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/ip"
+            android:height="50dp"
+            android:inputType="text">
+
+        </EditText>
+        <EditText
+            android:id="@+id/edit_port"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/port"
+            android:height="50dp"
+            android:inputType="number">
+
+        </EditText>
+        <EditText
+            android:id="@+id/edit_mac"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/mac_of_motherboard"
+            android:height="50dp"
+            android:inputType="text">
+
+        </EditText>
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

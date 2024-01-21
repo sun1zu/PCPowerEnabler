@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">PCEnabler</string>
+    <string name="your_ad">HereCouldBeYourAdvertisment</string>
+    <string name="your_ad_ru">Место для вашей рекламы</string>
+    <string name="turn_on_your_pc_ru">Включить Ваш комп?</string>
+    <string name="yes_ru">ДА!!!!!!!!!</string>
+    <string name="status_ru">Статус:</string>
+    <string name="status_connected">Подключено</string>
+    <string name="status_error">Ошибка!</string>
+    <string name="status_unknown_host">Ошибка: неизвестный хост</string>
+    <string name="status_sent_command_to_unknown_host">Ошибка: не удалось отправить!</string>
+    <string name="enter_ip_mac">Ввод IP, MAC</string>
+    <string name="insert_your_data">Введите ваши данные... пожалуйста...</string>
+    <string name="ip">IP</string>
+    <string name="port">Port</string>
+    <string name="mac_of_motherboard">MAC of motherboard</string>
+</resources>
