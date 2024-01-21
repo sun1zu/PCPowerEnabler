@@ -7,6 +7,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
 import java.net.Socket;
 import java.util.ArrayList;
 
@@ -24,13 +27,11 @@ public class SocketThread extends AsyncTask<String, Void, Void> {
         String ip = strings[0];
         int port = Integer.parseInt(strings[1]);
         String mac = strings[2];
+        DatagramSocket socket = null;
 
         try {
-            Socket socket = new Socket(ip, port);
-            DataOutputStream dataOutputStream = new DataOutputStream(socket.getOutputStream());
-            status = "Connected!";
-
-            DataOutputStream outputStream = new DataOutputStream(socket.getOutputStream());
+            socket = new DatagramSocket();
+            InetAddress host = InetAddress.getByName(ip);
 
             //filling our byte message
 
@@ -53,13 +54,12 @@ public class SocketThread extends AsyncTask<String, Void, Void> {
             for (int i = 0; i < bytes.size(); i++){
                 message[i] = bytes.get(i);
             }
-            
-            outputStream.write(message);
 
-            outputStream.close();
+            DatagramPacket dp = new DatagramPacket(message, message.length, host, port);
+            socket.send(dp);
+
             socket.close();
-
-
+            
         } catch (IOException | NumberFormatException e) {
             status = "Error: unknown host";
             e.printStackTrace();

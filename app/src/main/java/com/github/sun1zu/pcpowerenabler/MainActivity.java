@@ -3,8 +3,10 @@ package com.github.sun1zu.pcpowerenabler;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -32,6 +34,8 @@ public class MainActivity extends AppCompatActivity implements Dialog.DialogList
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        //TODO: SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.this); //serializing ip, mac, port
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
