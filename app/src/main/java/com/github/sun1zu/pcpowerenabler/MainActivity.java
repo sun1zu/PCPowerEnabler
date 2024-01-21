@@ -13,6 +13,7 @@ import android.widget.TextView;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.Socket;
+import java.util.ArrayList;
 
 import pl.droidsonroids.gif.GifImageView;
 
@@ -25,6 +26,8 @@ public class MainActivity extends AppCompatActivity implements Dialog.DialogList
     private TextView status;
     private boolean VolumeEnabled = false;
     private Button inputIpMac;
+
+    private String ip; private int port; private String mac;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -42,7 +45,9 @@ public class MainActivity extends AppCompatActivity implements Dialog.DialogList
 
 
         TurnOnPc.setOnClickListener(view -> {
-
+            SocketThread socketThread = new SocketThread();
+            socketThread.execute(ip, "" + port, mac);
+            status.setText(socketThread.getTaskStatus());
         });
 
         inputIpMac.setOnClickListener(view -> {
@@ -73,7 +78,9 @@ public class MainActivity extends AppCompatActivity implements Dialog.DialogList
 
     @Override
     public void applyTexts(String ip, int port, String mac) {
-
+        this.ip = ip;
+        this.port = port;
+        this.mac = mac;
     }
 
     @Override
