@@ -15,6 +15,7 @@ import java.util.ArrayList;
 
 public class SocketThread extends AsyncTask<String, Void, Void> {
 
+    //TODO: fix status for MainActivity EditText component
     private String status;
 
     public String getTaskStatus() {
@@ -24,10 +25,15 @@ public class SocketThread extends AsyncTask<String, Void, Void> {
     @Override
     protected Void doInBackground(String... strings) {
 
+        if(strings[0] == null || strings[1] == null || strings[2] == null){
+            status = "Error: Invalid input";
+            return null;
+        }
+
         String ip = strings[0];
         int port = Integer.parseInt(strings[1]);
         String mac = strings[2];
-        DatagramSocket socket = null;
+        DatagramSocket socket;
 
         try {
             socket = new DatagramSocket();

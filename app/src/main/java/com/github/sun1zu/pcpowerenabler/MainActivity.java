@@ -1,4 +1,5 @@
 package com.github.sun1zu.pcpowerenabler;
+//TODO: добавить возможность узнать, онлайн ли удаленный PC
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -28,6 +29,8 @@ public class MainActivity extends AppCompatActivity implements Dialog.DialogList
     private TextView status;
     private boolean VolumeEnabled = false;
     private Button inputIpMac;
+    SharedPreferences.Editor editor;
+    SharedPreferences preferences;
 
     private String ip; private int port; private String mac;
 
@@ -35,7 +38,8 @@ public class MainActivity extends AppCompatActivity implements Dialog.DialogList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        //TODO: SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.this); //serializing ip, mac, port
+        preferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.this); //serializing ip, mac, port
+        editor = preferences.edit();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -76,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements Dialog.DialogList
     }
 
     public void openDialog() {
-        Dialog dialog = new Dialog();
+        Dialog dialog = new Dialog(preferences.getString("IP", null), preferences.getInt("PORT", -1), preferences.getString("MAC", null));
         dialog.show(getSupportFragmentManager(), "inputDialog");
     }
 
@@ -85,6 +89,11 @@ public class MainActivity extends AppCompatActivity implements Dialog.DialogList
         this.ip = ip;
         this.port = port;
         this.mac = mac;
+
+        editor.putString("IP", ip);
+        editor.putInt("PORT", port);
+        editor.putString("MAC", mac);
+        editor.commit();
     }
 
     @Override
